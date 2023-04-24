@@ -53,6 +53,7 @@ from langchain.utilities.google_serper import GoogleSerperAPIWrapper
 from langchain.utilities.powerbi import PowerBIDataset
 from langchain.utilities.searx_search import SearxSearchWrapper
 from langchain.utilities.serpapi import SerpAPIWrapper
+from langchain.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
 from langchain.utilities.wikipedia import WikipediaAPIWrapper
 from langchain.utilities.wolfram_alpha import WolframAlphaAPIWrapper
 from langchain.vectorstores import FAISS, ElasticVectorSearch
@@ -80,6 +81,7 @@ __all__ = [
     "SelfAskWithSearchChain",
     "SerpAPIWrapper",
     "SerpAPIChain",
+    "DuckDuckGoSearchAPIWrapper",
     "SearxSearchWrapper",
     "GoogleSearchAPIWrapper",
     "GoogleSerperAPIWrapper",
