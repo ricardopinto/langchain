@@ -39,9 +39,9 @@ class DuckDuckGoSearchAPIWrapper(BaseModel):
         return values
 
     def run(self, query: str) -> str:
+        """Run query through DuckDuckGo and return results."""
         from duckduckgo_search import ddg
 
-        """Run query through DuckDuckGo and return results."""
         results = ddg(
             query,
             region=self.region,
