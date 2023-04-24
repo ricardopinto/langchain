@@ -35,6 +35,7 @@ from langchain.utilities.google_search import GoogleSearchAPIWrapper
 from langchain.utilities.google_serper import GoogleSerperAPIWrapper
 from langchain.utilities.searx_search import SearxSearchWrapper
 from langchain.utilities.serpapi import SerpAPIWrapper
+from langchain.utilities.duckduckgo_search import DuckDuckGoSearchAPIWrapper
 from langchain.utilities.wikipedia import WikipediaAPIWrapper
 from langchain.utilities.wolfram_alpha import WolframAlphaAPIWrapper
 
@@ -201,6 +202,12 @@ def _get_serpapi(**kwargs: Any) -> BaseTool:
         coroutine=SerpAPIWrapper(**kwargs).arun,
     )
 
+def _get_duckduckgo(**kwargs: Any) -> BaseTool:
+    return Tool(
+        name="Search",
+        description="A search engine. Useful for when you need to answer questions about current events. Input should be a search query.",
+        func=DuckDuckGoSearchAPIWrapper(**kwargs).run,
+    )
 
 def _get_searx_search(**kwargs: Any) -> BaseTool:
     return SearxSearchRun(wrapper=SearxSearchWrapper(**kwargs))
@@ -239,6 +246,7 @@ _EXTRA_OPTIONAL_TOOLS = {
     "bing-search": (_get_bing_search, ["bing_subscription_key", "bing_search_url"]),
     "google-serper": (_get_google_serper, ["serper_api_key"]),
     "serpapi": (_get_serpapi, ["serpapi_api_key", "aiosession"]),
+    "duckduckgo": (_get_duckduckgo, []),
     "searx-search": (_get_searx_search, ["searx_host", "engines", "aiosession"]),
     "wikipedia": (_get_wikipedia, ["top_k_results", "lang"]),
     "human": (_get_human_tool, ["prompt_func", "input_func"]),
